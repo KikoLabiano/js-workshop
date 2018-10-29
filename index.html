@@ -1,0 +1,116 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <h2>Advanced Javascript</h2>
+  <div id="accordion">
+    <h3>Scope</h3>
+    <div>
+      <ul>
+        <li>
+          Javascript se basa en el Lexical scope. Metafóricamente sería como hablar de ir piso a piso de un edificio preguntando por un elemento (variable, función, etc.). Si no lo encuentras en un piso subes y preguntas en el siguiente. Si llegas
+          al último miras en el objeto global. Otra forma de verlo sería pensar en burbujas que contienen scopes (contextos). En el siguiente ejemplo existirían tres burbujas: la de la función baz, la de la función foo y la del global.
+        </li>
+        <pre><code class="language-javascript">
+          function foo(){
+            var bar = "bar";
+            function baz(){
+              console.log(bar);
+            }
+            baz();
+          }
+          foo();
+
+          //bar
+        </code>
+        </pre>
+        <p>
+          Un problema con el que nos solemos encontrar es que muchas de nuestras variables y funciones no-anónimas pueden ser globales. Para privatizarlas utilizamos las llamadas IIFE.
+        </p>
+        <li>
+          IIFE Pattern: La función anónima que está contenida entre ( )(); crea su propio scope y las variables no están visibles en el global scope. Por eso se imprime "foo2" dentro del IIFE y "foo" fuera de él. Es un patrón muy utilizada para
+          evitar conflictos entre variables.
+          Se autoejecuta con (); nada más declararse y de ahí viene el nombre de IIFE (Immediately Invoked Function Expression)
+        </li>
+        <pre><code class="language-javascript">
+            var foo = "foo";
+            (function(){
+              var foo = "foo2";
+              console.log(foo); //foo2
+            })();
+            console.log(foo); //foo
+          </code>
+          </pre>
+        <li>
+          A los IIFE se les puede pasar parámetros. Una buena práctica si queremos que una función esté disponible de forma global sería hacer algo así (pasando el objeto window y renombrándolo como global):</li>
+        <pre><code class="language-javascript">
+              (function(global){
+                //global.loquesea
+              })(window);
+            </code>
+            </pre>
+        <li>
+          Otro caso típico es el de jQuery. Se le pasa el objeto jQuery como parámetro y se asigna el $ como nombre del objeto:
+        </li>
+        <pre><code class="language-javascript">
+                (function($){
+                  //$("...")
+                })(jQuery);
+              </code>
+              </pre>
+        <li>
+          En ES6 se añadió la keyword <code class="language-javascript">let</code> para proveer a JS de block scoping. Las variables declaradas con <code class="language-javascript">let</code> estarán disponibles sólo en el bloque de código donde
+          hayan sido declaradas. Un ejemplo típico es su uso en bucles:
+        </li>
+        <pre>
+          <code class="language-javascript">
+            function foo(){
+              var bar = "bar";
+              for(let i=0;i&lt;bar.length;i++)
+              {
+                console.log(bar.charAt(i));
+              }
+              console.log(i); //ReferenceError
+            }
+          </code>
+        </pre>
+       <p>
+         En este caso la variable i sólo está disponible en el bloque del for. Fuera de él dará un ReferenceError.
+         </p>
+      </ul>
+    </div>
+    <h3>Section 2</h3>
+    <div>
+      <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna.
+      </p>
+    </div>
+    <h3>Section 3</h3>
+    <div>
+      <p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam
+        ante aliquam nisi, eu iaculis leo purus venenatis dui. </p>
+      <ul>
+        <li>List item one</li>
+        <li>List item two</li>
+        <li>List item three</li>
+      </ul>
+    </div>
+    <h3>Section 4</h3>
+    <div>
+      <p>Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est. </p>
+      <p>Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="./css/prism.css">
+  <link rel="stylesheet" href="./css/js-workshop.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./js/prism.js"></script>
+  <script type="text/javascript" src="./js/js-workshop.js"></script>
+</body>
+
+</html>

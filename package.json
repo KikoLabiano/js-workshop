@@ -1,0 +1,24 @@
+{
+  "name": "js-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KikoLabiano/js-workshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KikoLabiano/js-workshop/issues"
+  },
+  "homepage": "https://github.com/KikoLabiano/js-workshop#readme",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "jquery-ui": "^1.12.1",
+    "require": "^2.4.20"
+  }
+}
